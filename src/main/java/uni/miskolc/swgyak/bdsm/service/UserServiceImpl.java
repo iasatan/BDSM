@@ -13,7 +13,14 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository){
-        User user = User.builder().userName("Adam").email("saa").role("User").password("saa").addresses(new ArrayList<>()).build();
+        User user = User.builder()
+                .userName("Adam")
+                .email("saa")
+                .role("User")
+                .password("saa")
+                .addresses(new ArrayList<>())
+                .basket(new Basket())
+                .build();
         userRepository.save(user);
         this.userRepository=userRepository;
     }
