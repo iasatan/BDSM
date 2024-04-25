@@ -13,18 +13,21 @@ import java.util.Scanner;
 public class Runner implements CommandLineRunner {
     @Autowired
     private UserManagementController userManagementController;
+    @Autowired
+    private AdminController adminController;
+
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Console app runs"); //sout
         Scanner scanner = new Scanner(System.in);
-        while (true){
+        while (true) {
             System.out.println("Command?");
-            System.out.println("EXIT/AddUser/ListUsers");
+            System.out.println("EXIT/AddUser/ListUsers/AddDvd/ListDvds/GetDvd/DeleteDvd");
             String command = scanner.nextLine();
-            if(command.equals("Exit")){
+            if (command.equals("Exit")) {
                 break;
             }
-            switch (command){
+            switch (command) {
                 case "AddUser":
                     userManagementController.addUser(scanner);
                     break;
@@ -33,6 +36,18 @@ public class Runner implements CommandLineRunner {
                     break;
                 case "AddBookToUser":
                     userManagementController.addBookToUser(scanner);
+                    break;
+                case "AddDvd":
+                    adminController.addDvd(scanner);
+                    break;
+                case "ListDvds":
+                    adminController.listDvds();
+                    break;
+                case "GetDvd":
+                    adminController.getDvd(scanner);
+                    break;
+                case "DeleteDvd":
+                    adminController.deleteDvd(scanner);
                     break;
             }
         }
