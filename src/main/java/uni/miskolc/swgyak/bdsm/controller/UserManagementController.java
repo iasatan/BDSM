@@ -3,6 +3,7 @@ package uni.miskolc.swgyak.bdsm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uni.miskolc.swgyak.bdsm.model.entities.Address;
+import uni.miskolc.swgyak.bdsm.model.entities.Basket;
 import uni.miskolc.swgyak.bdsm.model.entities.Dvd;
 import uni.miskolc.swgyak.bdsm.model.entities.User;
 import uni.miskolc.swgyak.bdsm.service.interfaces.AddressService;
@@ -38,7 +39,11 @@ public class UserManagementController {
         user.setEmail(email);
         user.setPassword(password);
         user.setRole(role);
+        Basket basket = new Basket();
+        basket.setUser(user);
+        user.setBasket(basket);
         Long id = userService.addUser(user);
+        basketService.saveBasket(basket);
         System.out.println(id);
     }
 

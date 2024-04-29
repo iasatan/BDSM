@@ -3,7 +3,7 @@ package uni.miskolc.swgyak.bdsm.service;
 import org.springframework.stereotype.Service;
 import uni.miskolc.swgyak.bdsm.model.entities.Basket;
 import uni.miskolc.swgyak.bdsm.model.entities.Dvd;
-import uni.miskolc.swgyak.bdsm.model.entities.User;
+//import uni.miskolc.swgyak.bdsm.model.entities.User;
 import uni.miskolc.swgyak.bdsm.persist.BasketRepository;
 import uni.miskolc.swgyak.bdsm.service.interfaces.BasketService;
 import uni.miskolc.swgyak.bdsm.service.interfaces.UserService;
@@ -33,5 +33,10 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public Basket GetBasketForUser(Long userId) {
         return basketRepository.findByUserId(userId);
+    }
+
+    @Override
+    public void saveBasket(Basket basket) {
+        basketRepository.save(basket);
     }
 }

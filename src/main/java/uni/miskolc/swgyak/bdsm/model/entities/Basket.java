@@ -18,10 +18,10 @@ public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany()
-    @Nullable
+    @OneToMany(fetch = FetchType.EAGER)
+    //@Nullable
     private List<Dvd> dvdList = new ArrayList<>();
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
     private User user;
 

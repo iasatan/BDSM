@@ -21,7 +21,7 @@ public class User {
     private String email;
     private String password;
     private String role;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Basket basket = new Basket();
     @OneToMany(mappedBy = "user")
     @Nullable

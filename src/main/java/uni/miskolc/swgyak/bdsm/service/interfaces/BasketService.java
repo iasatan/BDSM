@@ -9,4 +9,6 @@ import java.util.List;
 public interface BasketService {
     void addToBasket(Dvd dvd, Long userId);
     Basket GetBasketForUser(Long userId);
+
+    void saveBasket(Basket basket);
 }
