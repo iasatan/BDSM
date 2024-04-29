@@ -24,7 +24,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     @Nullable
     private List<Address> addresses = new ArrayList<>();
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wishlist_id")
+    private Wishlist wishlist = new Wishlist();
     @Override
     public String toString() {
         return "User{" +

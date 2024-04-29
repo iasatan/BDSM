@@ -2,6 +2,7 @@ package uni.miskolc.swgyak.bdsm.service;
 
 import org.springframework.stereotype.Service;
 import uni.miskolc.swgyak.bdsm.model.entities.User;
+import uni.miskolc.swgyak.bdsm.model.entities.Wishlist;
 import uni.miskolc.swgyak.bdsm.persist.UserRepository;
 import uni.miskolc.swgyak.bdsm.service.interfaces.UserService;
 
@@ -13,7 +14,9 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository){
-        User user = User.builder().userName("Adam").email("saa").role("User").password("saa").addresses(new ArrayList<>()).build();
+        Wishlist wishlist = new Wishlist();
+        User user = User.builder().userName("Adam").email("saa").role("User").password("saa").addresses(new ArrayList<>()).wishlist(wishlist).build();
+        wishlist.setUser(user);
         userRepository.save(user);
         this.userRepository=userRepository;
     }
