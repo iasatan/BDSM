@@ -31,7 +31,7 @@ public class Runner implements CommandLineRunner {
                 case "ListUsers":
                     userManagementController.listUsers();
                     break;
-                case "AddBookToUser":
+                case "AddAddressToUser":
                     userManagementController.addAddressToUser(scanner);
                     break;
                 case "AddDvd":
