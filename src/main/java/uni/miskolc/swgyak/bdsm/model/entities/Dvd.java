@@ -19,6 +19,9 @@ public class Dvd {
     private String genre;
     private double price;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "wishlist_id")
+    private Wishlist wishlist;
     @Override
     public String toString() {
         return "Dvd{" +
@@ -29,5 +32,4 @@ public class Dvd {
                 ", price='" + price + '\'' +
                 '}';
     }
-
 }

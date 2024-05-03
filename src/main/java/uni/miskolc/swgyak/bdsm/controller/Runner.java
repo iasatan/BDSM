@@ -19,12 +19,12 @@ public class Runner implements CommandLineRunner {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Command?");
-            System.out.println("EXIT/AddUser/ListUsers/AddDvd/ListDvds/GetDvd/DeleteDvd/GetBasket/AddToBasket");
+            System.out.println("EXIT/AddUser/ListUsers/AddDvd/ListDvds/GetDvd/DeleteDvd/ListWishlist/AddDvdToWishlist/RemoveFromWishlist/GetBasket/AddToBasket");
             String command = scanner.nextLine();
-            if (command.equals("Exit")){
+            if (command.equals("Exit")) {
                 break;
             }
-            switch (command){
+            switch (command) {
                 case "AddUser":
                     userManagementController.addUser(scanner);
                     break;
@@ -32,7 +32,28 @@ public class Runner implements CommandLineRunner {
                     userManagementController.listUsers();
                     break;
                 case "AddAddressToUser":
-                    userManagementController.addBookToUser(scanner);
+                    userManagementController.addAddressToUser(scanner);
+                    break;
+                case "AddDvd":
+                    adminController.addDvd(scanner);
+                    break;
+                case "ListDvds":
+                    adminController.listDvds();
+                    break;
+                case "GetDvd":
+                    adminController.getDvd(scanner);
+                    break;
+                case "DeleteDvd":
+                    adminController.deleteDvd(scanner);
+                    break;
+                case "ListWishlist":
+                    userManagementController.getWishlistForUser(scanner);
+                    break;
+                case "AddDvdToWishlist":
+                    userManagementController.addToWishlist(scanner);
+                    break;
+                case "RemoveFromWishlist":
+                    userManagementController.removeFromWishlist(scanner);
                     break;
                 case "AddDvd":
                     adminController.addDvd(scanner);
@@ -55,5 +76,4 @@ public class Runner implements CommandLineRunner {
             }
         }
     }
-
 }

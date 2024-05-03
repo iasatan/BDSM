@@ -30,7 +30,8 @@ public class DvdServiceImpl implements DvdService {
 
     @Override
     public Dvd getDvd(Long id) {
-        Dvd dvd = dvdRepository.findById(id).get();
+        Dvd dvd = dvdRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("No DVD found with id: " + id));
         return dvd;
     }
 

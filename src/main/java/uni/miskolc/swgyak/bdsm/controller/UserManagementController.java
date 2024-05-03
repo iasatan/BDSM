@@ -6,10 +6,12 @@ import uni.miskolc.swgyak.bdsm.model.entities.Address;
 import uni.miskolc.swgyak.bdsm.model.entities.Basket;
 import uni.miskolc.swgyak.bdsm.model.entities.Dvd;
 import uni.miskolc.swgyak.bdsm.model.entities.User;
+import uni.miskolc.swgyak.bdsm.model.entities.Wishlist;
 import uni.miskolc.swgyak.bdsm.service.interfaces.AddressService;
 import uni.miskolc.swgyak.bdsm.service.interfaces.BasketService;
 import uni.miskolc.swgyak.bdsm.service.interfaces.DvdService;
 import uni.miskolc.swgyak.bdsm.service.interfaces.UserService;
+import uni.miskolc.swgyak.bdsm.service.interfaces.WishlistService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -24,8 +26,10 @@ public class UserManagementController {
     private BasketService basketService;
     @Autowired
     private DvdService dvdService;
+    @Autowired
+    private WishlistService wishlistService;
 
-    public void addUser(Scanner scanner){
+    public void addUser(Scanner scanner) {
         System.out.println("name?");
         String userName = scanner.nextLine();
         System.out.println("email?");
@@ -42,21 +46,24 @@ public class UserManagementController {
         Basket basket = new Basket();
         basket.setUser(user);
         user.setBasket(basket);
+        Wishlist wishlist = new Wishlist();
+        wishlist.setUser(user);
+        user.setWishlist(wishlist);
         Long id = userService.addUser(user);
+        wishlistService.save(wishlist);
         basketService.saveBasket(basket);
-        System.out.println(id);
     }
 
-    public void listUsers(){
+    public void listUsers() {
         System.out.println("Users:");
         List<User> users = userService.getAllUser();
-        for (User user :users) {
+        for (User user : users) {
             System.out.println(user);
 
         }
     }
 
-    public void addBookToUser(Scanner scanner) {
+    public void addAddressToUser(Scanner scanner) {
         System.out.println("userId?");
         Long userId = Long.decode(scanner.nextLine());
         Address address = new Address();
@@ -85,5 +92,26 @@ public class UserManagementController {
         System.out.println("DvdId?");
         Long dvdId = Long.decode(scanner.nextLine());
         basketService.addToBasket(dvdService.getDvd(dvdId), userId);
+
+    public void addToWishlist(Scanner scanner) {
+        System.out.println("userId?");
+        Long userId = Long.decode(scanner.nextLine());
+        System.out.println("dvdId?");
+        Long dvdId = Long.decode(scanner.nextLine());
+        wishlistService.addToWishlist(dvdId, userId);
+    }
+
+    public void removeFromWishlist(Scanner scanner) {
+        System.out.println("userId?");
+        Long userId = Long.decode(scanner.nextLine());
+        System.out.println("dvdId?");
+        Long dvdId = Long.decode(scanner.nextLine());
+        wishlistService.removeFromWishlist(userId, dvdId);
+    }
+
+    public void getWishlistForUser(Scanner scanner) {
+        System.out.println("userId?");
+        Long userId = Long.decode(scanner.nextLine());
+        System.out.println(wishlistService.getWishlistForUser(userId));
     }
 }
