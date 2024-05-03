@@ -21,10 +21,10 @@ public class Runner implements CommandLineRunner {
             System.out.println("Command?");
             System.out.println("EXIT/AddUser/ListUsers/AddDvd/ListDvds/GetDvd/DeleteDvd/GetBasket/AddToBasket");
             String command = scanner.nextLine();
-            if (command.equals("Exit")) {
+            if (command.equals("Exit")){
                 break;
             }
-            switch (command) {
+            switch (command){
                 case "AddUser":
                     userManagementController.addUser(scanner);
                     break;
@@ -32,7 +32,7 @@ public class Runner implements CommandLineRunner {
                     userManagementController.listUsers();
                     break;
                 case "AddAddressToUser":
-                    userManagementController.addAddressToUser(scanner);
+                    userManagementController.addBookToUser(scanner);
                     break;
                 case "AddDvd":
                     adminController.addDvd(scanner);
@@ -55,6 +55,5 @@ public class Runner implements CommandLineRunner {
             }
         }
     }
-
 
 }

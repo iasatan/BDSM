@@ -25,7 +25,7 @@ public class UserManagementController {
     @Autowired
     private DvdService dvdService;
 
-    public void addUser(Scanner scanner) {
+    public void addUser(Scanner scanner){
         System.out.println("name?");
         String userName = scanner.nextLine();
         System.out.println("email?");
@@ -47,16 +47,16 @@ public class UserManagementController {
         System.out.println(id);
     }
 
-    public void listUsers() {
+    public void listUsers(){
         System.out.println("Users:");
         List<User> users = userService.getAllUser();
-        for (User user : users) {
+        for (User user :users) {
             System.out.println(user);
 
         }
     }
 
-    public void addAddressToUser(Scanner scanner) {
+    public void addBookToUser(Scanner scanner) {
         System.out.println("userId?");
         Long userId = Long.decode(scanner.nextLine());
         Address address = new Address();
