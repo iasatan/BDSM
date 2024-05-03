@@ -92,6 +92,7 @@ public class UserManagementController {
         System.out.println("DvdId?");
         Long dvdId = Long.decode(scanner.nextLine());
         basketService.addToBasket(dvdService.getDvd(dvdId), userId);
+    }
 
     public void addToWishlist(Scanner scanner) {
         System.out.println("userId?");

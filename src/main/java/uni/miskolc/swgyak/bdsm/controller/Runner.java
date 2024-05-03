@@ -55,18 +55,6 @@ public class Runner implements CommandLineRunner {
                 case "RemoveFromWishlist":
                     userManagementController.removeFromWishlist(scanner);
                     break;
-                case "AddDvd":
-                    adminController.addDvd(scanner);
-                    break;
-                case "ListDvds":
-                    adminController.listDvds();
-                    break;
-                case "GetDvd":
-                    adminController.getDvd(scanner);
-                    break;
-                case "DeleteDvd":
-                    adminController.deleteDvd(scanner);
-                    break;
                 case "GetBasket":
                     userManagementController.getBasket(scanner);
                     break;
