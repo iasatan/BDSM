@@ -18,6 +18,7 @@ public class Dvd {
     private int releaseYear;
     private String genre;
     private double price;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "wishlist_id")
     private Wishlist wishlist;
@@ -31,5 +32,4 @@ public class Dvd {
                 ", price='" + price + '\'' +
                 '}';
     }
-
 }

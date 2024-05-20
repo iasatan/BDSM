@@ -5,3 +5,4 @@ import uni.miskolc.swgyak.bdsm.model.entities.Dvd;
 
 public interface DvdRepository extends CrudRepository<Dvd, Long> {
 }
+

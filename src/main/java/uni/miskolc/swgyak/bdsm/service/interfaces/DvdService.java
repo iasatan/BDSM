@@ -9,5 +9,4 @@ public interface DvdService {
     List<Dvd> getAllDvd();
     Dvd getDvd(Long id);
     void deleteDvd(Long id);
-
 }

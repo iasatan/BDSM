@@ -19,7 +19,7 @@ public class Runner implements CommandLineRunner {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Command?");
-            System.out.println("EXIT/AddUser/ListUsers/AddDvd/ListDvds/GetDvd/DeleteDvd/ListWishlist/AddDvdToWishlist/RemoveFromWishlist");
+            System.out.println("EXIT/AddUser/ListUsers/AddDvd/ListDvds/GetDvd/DeleteDvd/ListWishlist/AddDvdToWishlist/RemoveFromWishlist/GetBasket/AddToBasket");
             String command = scanner.nextLine();
             if (command.equals("Exit")) {
                 break;
@@ -55,9 +55,13 @@ public class Runner implements CommandLineRunner {
                 case "RemoveFromWishlist":
                     userManagementController.removeFromWishlist(scanner);
                     break;
+                case "GetBasket":
+                    userManagementController.getBasket(scanner);
+                    break;
+                case "AddToBasket":
+                    userManagementController.addToBasket(scanner);
+                    break;
             }
         }
     }
-
-
 }
